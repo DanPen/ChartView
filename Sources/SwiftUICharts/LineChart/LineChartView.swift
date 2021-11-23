@@ -74,7 +74,7 @@ public struct LineChartView: View {
                         }
                         HStack {
                             
-                            if let rateValue = self.rateValue
+                            if let rateValue: Int = self.rateValue
                             {
                                 if (rateValue ?? 0 >= 0){
                                     Image(systemName: "arrow.up")
