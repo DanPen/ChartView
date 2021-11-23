@@ -31,14 +31,12 @@ public struct LineChartView: View {
         }
     }
     var frame = CGSize(width: 180, height: 120)
-    private var rateValue: Int?
     
     public init(data: [Double],
                 title: String,
                 legend: String? = nil,
                 style: ChartStyle = Styles.lineChartStyleOne,
                 form: CGSize? = ChartForm.medium,
-                rateValue: Int? = nil,
                 dropShadow: Bool? = true,
                 valueSpecifier: String? = "%.1f") {
         
@@ -51,7 +49,6 @@ public struct LineChartView: View {
         frame = CGSize(width: self.formSize.width, height: self.formSize.height/2)
         self.dropShadow = dropShadow!
         self.valueSpecifier = valueSpecifier!
-        self.rateValue = rateValue
     }
     
     public var body: some View {
@@ -71,18 +68,6 @@ public struct LineChartView: View {
                             Text(self.legend!)
                                 .font(.callout)
                                 .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor :self.style.legendTextColor)
-                        }
-                        HStack {
-                            
-                            if let rateValue: Int = self.rateValue
-                            {
-                                if (rateValue ?? 0 >= 0){
-                                    Image(systemName: "arrow.up")
-                                }else{
-                                    Image(systemName: "arrow.down")
-                                }
-                                Text("\(rateValue!)%")
-                            }
                         }
                     }
                     .transition(.opacity)
